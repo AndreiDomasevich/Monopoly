@@ -14,7 +14,8 @@ import java.util.UUID;
  */
 public class ServerThread extends Thread {
 
-    private final BluetoothServerSocket bluetoothServerSocket;
+    private BluetoothServerSocket bluetoothServerSocket;
+    private ConnectedThread connectedThread;
 
     ServerThread(BluetoothAdapter bluetoothAdapter, UUID uuid) {
         BluetoothServerSocket tmpBluetoothServerSocket = null;
@@ -37,49 +38,8 @@ public class ServerThread extends Thread {
             }
 
             if(bluetoothSocket != null) {
-                new ConnectedThread(bluetoothSocket).start();
-            }
-        }
-    }
-
-    public class ConnectedThread extends Thread {
-
-        private BluetoothSocket bluetoothSocket;
-        private InputStream inputStream;
-        private OutputStream outputStream;
-
-        ConnectedThread(BluetoothSocket bluetoothSocket) {
-            this.bluetoothSocket = bluetoothSocket;
-            InputStream tmpInputStream = null;
-            OutputStream tmpOutputStream = null;
-
-            try {
-                tmpOutputStream = this.bluetoothSocket.getOutputStream();
-                tmpInputStream = this.bluetoothSocket.getInputStream();
-            } catch(IOException e) {}
-
-            inputStream = tmpInputStream;
-            outputStream = tmpOutputStream;
-        }
-
-        public void write(byte[] bytes) {
-            try {
-                outputStream.write(bytes);
-            } catch (IOException e) {}
-        }
-
-        @Override
-        public void run() {
-            byte[] buffer = new byte[1024];
-            int bytes;
-
-            while(true) {
-                try {
-                    bytes = inputStream.read(buffer);
-                } catch(IOException e) {
-                    break;
-                }
-
+                connectedThread = new ConnectedThread(bluetoothSocket);
+                connectedThread.start();
             }
         }
     }

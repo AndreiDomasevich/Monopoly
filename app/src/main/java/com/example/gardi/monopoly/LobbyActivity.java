@@ -79,6 +79,20 @@ public class LobbyActivity extends AppCompatActivity {
             client3ImageButton.setVisibility(View.INVISIBLE);
             startButton.setVisibility(View.INVISIBLE);
         }
+
+        if(role == "Server") {
+            client1Spinner.setEnabled(false);
+            client1EditText.setEnabled(false);
+            client1CheckBox.setEnabled(false);
+
+            client2Spinner.setEnabled(false);
+            client2EditText.setEnabled(false);
+            client2CheckBox.setEnabled(false);
+
+            client3Spinner.setEnabled(false);
+            client3EditText.setEnabled(false);
+            client3CheckBox.setEnabled(false);
+        }
     }
 
     public void setSpinnerAdapter() {
