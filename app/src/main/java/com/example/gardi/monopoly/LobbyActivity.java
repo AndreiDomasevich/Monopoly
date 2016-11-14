@@ -18,6 +18,7 @@ public class LobbyActivity extends AppCompatActivity {
     private Button startButton, exitButton;
     private EditText serverEditText, client1EditText, client2EditText, client3EditText;
     private CheckBox client1CheckBox, client2CheckBox, client3CheckBox;
+    private User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -89,4 +90,5 @@ public class LobbyActivity extends AppCompatActivity {
         client2Spinner.setAdapter(customSpinnerAdapter);
         client3Spinner.setAdapter(customSpinnerAdapter);
     }
+
 }
