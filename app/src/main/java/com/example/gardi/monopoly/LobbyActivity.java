@@ -73,25 +73,34 @@ public class LobbyActivity extends AppCompatActivity {
     }
 
     public void setVisible() {
-        if(role == "Client") {
-            client1ImageButton.setVisibility(View.INVISIBLE);
-            client2ImageButton.setVisibility(View.INVISIBLE);
-            client3ImageButton.setVisibility(View.INVISIBLE);
-            startButton.setVisibility(View.INVISIBLE);
+        if(role.equals("Client") ) {
+            client1ImageButton.setVisibility(View.GONE);
+            client2ImageButton.setVisibility(View.GONE);
+            client3ImageButton.setVisibility(View.GONE);
+            startButton.setVisibility(View.GONE);
         }
 
-        if(role == "Server") {
+        if(role.equals("Server") ) {
             client1Spinner.setEnabled(false);
+            client1Spinner.setFocusable(false);
             client1EditText.setEnabled(false);
+            client1EditText.setFocusable(false);
             client1CheckBox.setEnabled(false);
+            client1CheckBox.setFocusable(false);
 
             client2Spinner.setEnabled(false);
+            client2Spinner.setFocusable(false);
             client2EditText.setEnabled(false);
+            client2EditText.setFocusable(false);
             client2CheckBox.setEnabled(false);
+            client2CheckBox.setFocusable(false);
 
             client3Spinner.setEnabled(false);
+            client3Spinner.setFocusable(false);
             client3EditText.setEnabled(false);
+            client3EditText.setFocusable(false);
             client3CheckBox.setEnabled(false);
+            client3CheckBox.setFocusable(false);
         }
     }
 
