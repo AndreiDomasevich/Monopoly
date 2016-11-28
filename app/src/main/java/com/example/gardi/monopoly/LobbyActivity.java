@@ -4,9 +4,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.ButtonBarLayout;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.*;
 
 public class LobbyActivity extends AppCompatActivity {
@@ -19,6 +16,7 @@ public class LobbyActivity extends AppCompatActivity {
     private EditText serverEditText, client1EditText, client2EditText, client3EditText;
     private CheckBox client1CheckBox, client2CheckBox, client3CheckBox;
     private User user;
+    private BluetoothController bluetoothController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +29,10 @@ public class LobbyActivity extends AppCompatActivity {
         findView();
         setSpinnerAdapter();
         setVisible();
+
+        if(role.equals("Server")) {
+            startServerThread();
+        }
     }
 
     public void findView() {
@@ -74,10 +76,14 @@ public class LobbyActivity extends AppCompatActivity {
 
     public void setVisible() {
         if(role.equals("Client") ) {
-            client1ImageButton.setVisibility(View.GONE);
-            client2ImageButton.setVisibility(View.GONE);
-            client3ImageButton.setVisibility(View.GONE);
-            startButton.setVisibility(View.GONE);
+            client1ImageButton.setEnabled(false);
+            client1ImageButton.setFocusable(false);
+            client2ImageButton.setEnabled(false);
+            client2ImageButton.setFocusable(false);
+            client3ImageButton.setEnabled(false);
+            client3ImageButton.setFocusable(false);
+            startButton.setEnabled(false);
+            startButton.setFocusable(false);
         }
 
         if(role.equals("Server") ) {
@@ -114,4 +120,21 @@ public class LobbyActivity extends AppCompatActivity {
         client3Spinner.setAdapter(customSpinnerAdapter);
     }
 
+    public boolean setBluetoothController() {
+        bluetoothController = new BluetoothController(this);
+        if(bluetoothController.getAdapter()) {
+            bluetoothController.turnOnBluetooth();
+            return true;
+        }
+
+        return false;
+    }
+
+    public void startServerThread() {
+        setBluetoothController();
+
+        ServerThread serverThread = new ServerThread(bluetoothController.bluetoothAdapter, BluetoothController.uuid);
+
+        serverThread.start();
+    }
 }

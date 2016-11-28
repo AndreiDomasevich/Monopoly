@@ -60,10 +60,10 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void onClientClick() {
-        Intent lobbyIntent = new Intent(MenuActivity.this, LobbyActivity.class);
-        lobbyIntent.putExtra("Role","Client");
+        Intent findDeviceIntent = new Intent(MenuActivity.this, FindDeviceActivity.class);
+        findDeviceIntent.putExtra("Role","Client");
 
-        startActivity(lobbyIntent);
+        startActivity(findDeviceIntent);
     }
 
     public void onServerClick() {

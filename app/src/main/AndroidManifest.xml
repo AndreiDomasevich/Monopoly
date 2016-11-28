@@ -2,7 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.example.gardi.monopoly">
 
-    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH"/>
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"/>
 
     <application
             android:allowBackup="true"
@@ -22,6 +23,8 @@
         <activity android:name=".MenuActivity">
         </activity>
         <activity android:name=".LobbyActivity">
+        </activity>
+        <activity android:name=".FindDeviceActivity">
         </activity>
     </application>
 

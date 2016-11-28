@@ -26,7 +26,7 @@
                     android:layout_height="wrap_content"
                     android:id="@+id/serverSpinner" android:layout_column="3" android:layout_marginTop="20dp"
                     android:spinnerMode="dropdown"/>
-            <Button android:text="Начать" android:id="@+id/button" android:layout_column="4"
+            <Button android:text="Начать" android:id="@+id/startButton" android:layout_column="4"
                     android:layout_width="wrap_content" android:layout_height="wrap_content"
                     android:layout_marginTop="20dp"/>
         </TableRow>
@@ -53,7 +53,7 @@
                     android:id="@+id/client1Spinner" android:layout_column="3" android:layout_marginTop="20dp"
                     android:spinnerMode="dropdown"/>
             <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="   Выход   "
-                    android:id="@+id/button2" android:layout_column="4" android:layout_marginTop="20dp"/>
+                    android:id="@+id/exitButton" android:layout_column="4" android:layout_marginTop="20dp"/>
         </TableRow>
         <TableRow
                 android:layout_width="match_parent"
